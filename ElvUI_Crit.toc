@@ -1,0 +1,9 @@
+## Interface: 70000
+## Version: 70000.0
+## Title: |cff1784d1ElvUI |r|cffc7c7cfCrit|r
+## Notes: |cff1784d1ElvUI |r|cffc7c7cfCrit|r UI
+## Author: Drauer#1706 @battle.net / vforge @github
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## X-GitHub: ForgedAddons/ElvUI_Crit
+## RequiredDeps: ElvUI
