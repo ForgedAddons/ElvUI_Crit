@@ -3,7 +3,27 @@
 ## Title: |cff1784d1ElvUI |r|cffc7c7cfCrit|r
 ## Notes: |cff1784d1ElvUI |r|cffc7c7cfCrit|r UI
 ## Author: Drauer#1706 @battle.net / vforge @github
+## X-Credits: Skullflower, Feraldin, Instant, Tristimdorio (Omega1970), Azilroka, Lockslap, Sortokk, Repooc, moresunders
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 ## X-GitHub: ForgedAddons/ElvUI_Crit
 ## RequiredDeps: ElvUI
+## OptionalDeps: LibRangeCheck-2.0
+## URL: http://github.com/ForgedAddons/ElvUI_Crit/
+## X-Website: http://github.com/ForgedAddons/ElvUI_Crit/
+## X-Embeds: LibRangeCheck-2.0
+## X-Localizations: enUS, enGB
+## X-CompatibleLocales: enUS, enGB
+## X-Category: Plugins
+
+developer\load_developer.xml
+
+#@no-lib-strip@
+libs\load_libs.xml
+#@end-no-lib-strip@
+
+locales\load_locales.xml
+media\load_media.xml
+config\load_config.xml
+modules\load_modules.xml
+ElvUI_Crit.lua

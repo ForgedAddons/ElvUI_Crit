@@ -1,0 +1,9 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Script file='autorelease.lua'/>
+  <Script file='faction.lua'/>
+  <Script file='minimapbuttons.lua'/>
+  <Script file='movers.lua'/>
+  <Script file='paperdoll.lua'/>
+  <Script file='raidmarkers.lua'/>
+  <Script file='misc.lua'/>
+</Ui>
