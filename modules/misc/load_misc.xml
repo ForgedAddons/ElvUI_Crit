@@ -1,9 +1,12 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
-  <Script file='misc.lua'/>
-  <Script file='autorelease.lua'/>
-  <Script file='faction.lua'/>
-  <Script file='minimapbuttons.lua'/>
   <Script file='paperdoll.lua'/>
+  <Script file='misc.lua'/>
+  <Script file='afk.lua'/>
+  <Script file='autorelease.lua'/>
+  <Script file='baginfo.lua'/>
+  <Script file='minimapbuttons.lua'/>
+  <Script file='autoreagentbank.lua'/>
   <Script file='raidmarkers.lua'/>
+  <Script file='faction.lua'/>
   <Script file='movers.lua'/>
 </Ui>

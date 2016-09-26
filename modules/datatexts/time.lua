@@ -30,7 +30,7 @@ local updateQuestTable = false
 local function ValueColorUpdate(hex, r, g, b)
 	europeDisplayFormat = join("", "%02d", ":|r%02d")
 	ukDisplayFormat = join("", "", "%d", ":|r%02d")
-	
+
 	if lastPanel ~= nil then
 		Update(lastPanel, 20000)
 	end
@@ -66,7 +66,7 @@ local function CalculateTimeLeft(time)
 	local hour = floor(time / 3600)
 	local min = floor(time / 60 - (hour*60))
 	local sec = time - (hour * 3600) - (min * 60)
-	
+
 	return hour, min, sec
 end
 
@@ -75,15 +75,15 @@ local function formatResetTime(sec)
 	if not type(d) == 'number' or not type(h)== 'number' or not type(m) == 'number' or not type(s) == 'number' then
 		return 'N/A'
 	end
-	
-	if d > 0 and lockoutFormatString[h>10 and 1 or 2] then 
+
+	if d > 0 and lockoutFormatString[h>10 and 1 or 2] then
 		return format(lockoutFormatString[h>10 and 1 or 2], d, h, m)
 	end
 	if h > 0 and lockoutFormatString[h>10 and 3 or 4] then
 		return format(lockoutFormatString[h>10 and 3 or 4], h, m)
 	end
-	if m > 0 and lockoutFormatString[m>10 and 5 or 6] then 
-		return format(lockoutFormatString[m>10 and 5 or 6], m) 
+	if m > 0 and lockoutFormatString[m>10 and 5 or 6] then
+		return format(lockoutFormatString[m>10 and 5 or 6], m)
 	end
 end
 
@@ -125,9 +125,9 @@ local function OnEnter(self)
 			else
 				startTime = SecondsToTime(startTime, false, nil, 3)
 			end
-			DT.tooltip:AddDoubleLine(format(formatBattleGroundInfo, localizedName), startTime, 1, 1, 1, lockoutColorNormal.r, lockoutColorNormal.g, lockoutColorNormal.b)	
+			DT.tooltip:AddDoubleLine(format(formatBattleGroundInfo, localizedName), startTime, 1, 1, 1, lockoutColorNormal.r, lockoutColorNormal.g, lockoutColorNormal.b)
 		end
-	end	
+	end
 
 	local oneraid, lockoutColor
 	for i = 1, GetNumSavedInstances() do
@@ -138,21 +138,21 @@ local function OnEnter(self)
 				DT.tooltip:AddLine(L["Saved Raid(s)"])
 				oneraid = true
 			end
-			if extended then 
-				lockoutColor = lockoutColorExtended 
-			else 
-				lockoutColor = lockoutColorNormal 
+			if extended then
+				lockoutColor = lockoutColorExtended
+			else
+				lockoutColor = lockoutColorNormal
 			end
-			
+
 			local _, _, isHeroic, _, displayHeroic, displayMythic = GetDifficultyInfo(difficultyId)
 			if (numEncounters and numEncounters > 0) and (encounterProgress and encounterProgress > 0) then
 				DT.tooltip:AddDoubleLine(format(lockoutInfoFormat, maxPlayers, (displayMythic and "M" or (isHeroic or displayHeroic) and "H" or "N"), name, encounterProgress, numEncounters), SecondsToTime(reset, false, nil, 3), 1, 1, 1, lockoutColor.r, lockoutColor.g, lockoutColor.b)
 			else
 				DT.tooltip:AddDoubleLine(format(lockoutInfoFormatNoEnc, maxPlayers, (displayMythic and "M" or (isHeroic or displayHeroic) and "H" or "N"), name), SecondsToTime(reset, false, nil, 3), 1, 1, 1, lockoutColor.r, lockoutColor.g, lockoutColor.b)
-			end			
+			end
 		end
-	end	
-	
+	end
+
 	local addedLine = false
 	for i = 1, GetNumSavedWorldBosses() do
 		name, instanceID, reset = GetSavedWorldBossInfo(i)
@@ -162,41 +162,41 @@ local function OnEnter(self)
 				DT.tooltip:AddLine(RAID_INFO_WORLD_BOSS.."(s)")
 				addedLine = true
 			end
-			DT.tooltip:AddDoubleLine(name, SecondsToTime(reset, true, nil, 3), 1, 1, 1, 0.8, 0.8, 0.8)		
+			DT.tooltip:AddDoubleLine(name, SecondsToTime(reset, true, nil, 3), 1, 1, 1, 0.8, 0.8, 0.8)
 		end
 	end
-	
+
 	local timeText
 	local Hr, Min, AmPm = CalculateTimeValues(true)
 
 	DT.tooltip:AddLine(" ")
 	if AmPm == -1 then
-		DT.tooltip:AddDoubleLine(E.db.datatexts.localtime and TIMEMANAGER_TOOLTIP_REALMTIME or TIMEMANAGER_TOOLTIP_LOCALTIME, 
+		DT.tooltip:AddDoubleLine(E.db.datatexts.localtime and TIMEMANAGER_TOOLTIP_REALMTIME or TIMEMANAGER_TOOLTIP_LOCALTIME,
 			format(europeDisplayFormat_nocolor, Hr, Min), 1, 1, 1, lockoutColorNormal.r, lockoutColorNormal.g, lockoutColorNormal.b)
 	else
 		DT.tooltip:AddDoubleLine(E.db.datatexts.localtime and TIMEMANAGER_TOOLTIP_REALMTIME or TIMEMANAGER_TOOLTIP_LOCALTIME,
 			format(ukDisplayFormat_nocolor, Hr, Min, APM[AmPm]), 1, 1, 1, lockoutColorNormal.r, lockoutColorNormal.g, lockoutColorNormal.b)
-	end	
-	
+	end
+
 	DT.tooltip:Show()
 end
 
 local int = 3
 function Update(self, t)
 	int = int - t
-	
+
 	if enteredFrame then
 		OnEnter(self)
 	end
-	
+
 	--[[if GameTimeFrame.flashInvite then
 		E:Flash(self, 0.53)
 	else
 		E:StopFlash(self)
 	end]]
-	
+
 	if int > 0 then return end
-	
+
 	local Hr, Min, AmPm = CalculateTimeValues(false)
 
 	-- no update quick exit
@@ -204,11 +204,11 @@ function Update(self, t)
 		int = 5
 		return
 	end
-	
+
 	curHr = Hr
 	curMin = Min
 	curAmPm = AmPm
-		
+
 	if AmPm == -1 then
 		self.text:SetFormattedText(europeDisplayFormat, Hr, Min)
 	else

@@ -1,5 +1,5 @@
 local E, L, V, P, G = unpack(ElvUI); --Inport: Engine, Locales, PrivateDB, ProfileDB, GlobalDB, Localize Underscore
-local RM = E:NewModule('RaidMarkerBar', 'AceEvent-3.0')
+local RM = E:NewModule('RaidMarkers', 'AceEvent-3.0')
 
 local layouts = {
 	[1] = {RT = 1, WM = 5},	-- yellow/star
